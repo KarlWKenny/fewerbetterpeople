@@ -1,0 +1,62 @@
+---
+// Built but hidden: not in nav, noindex, excluded from the sitemap.
+// See CLAUDE.md "Flipping /writing on" when there are ~3 articles.
+import Base from '../../layouts/Base.astro';
+import { getPublished, byDateDesc, formatDate } from '../../lib/content';
+
+const articles = (await getPublished('writing')).sort(byDateDesc);
+---
+
+<Base
+  title="Writing"
+  description="Articles on running mid-market industrial companies: fewer, better people; operating cadence; and getting the owner out of the operator seat."
+  noindex
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">Writing</p>
+      <h1>Articles.</h1>
+      {
+        articles.length === 0 ? (
+          <p>Nothing published yet.</p>
+        ) : (
+          <ul class="article-list">
+            {articles.map((a) => (
+              <li>
+                <h2>
+                  <a href={`/writing/${a.id}`}>{a.data.title}</a>
+                </h2>
+                <p>{a.data.deck}</p>
+                <p class="mono-label">
+                  {formatDate(a.data.publishDate)} · {a.data.readingTime} min
+                </p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-m);
+  }
+
+  .article-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  .article-list h2 {
+    font-size: var(--step-2);
+  }
+
+  .article-list .mono-label {
+    margin-top: var(--space-2xs);
+  }
+</style>

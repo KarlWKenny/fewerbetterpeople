@@ -1,0 +1,32 @@
+# PR checks only. Deployment is handled by Cloudflare Pages' Git integration
+# (builds on push to main), not by Actions.
+name: PR checks
+
+on:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      - name: Link check
+        # Absolute self-references (canonical/OG URLs) are skipped — the
+        # domain may not resolve during PR checks. Internal links and any
+        # external links added in content are verified.
+        run: npx --yes linkinator ./dist --recurse --silent --skip "fewerbetterpeople\.ca"

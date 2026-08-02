@@ -1,0 +1,269 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import DimensionLine from '../components/DimensionLine.astro';
+import { getPublished, byOrder } from '../lib/content';
+
+const principles = await Promise.all(
+  (await getPublished('principles')).sort(byOrder).map(async (p) => {
+    const { Content } = await render(p);
+    return { data: p.data, Content };
+  }),
+);
+const services = (await getPublished('services')).sort(byOrder);
+const work = (await getPublished('work')).sort(byOrder);
+---
+
+<Base
+  title="fewer, better people — interim & fractional CEO for the industrial mid-market"
+  description="Karl Kenny, P.Eng. takes the CEO seat in privately held industrial companies — rebuilds the team and the operating system, then hands back a business that runs without the owner."
+>
+  <!-- Hero: the one place the design spends its boldness -->
+  <section class="hero on-dark">
+    <div class="wrap">
+      <p class="mono-label kicker">Interim &amp; fractional CEO — industrial mid-market</p>
+      <h1>Fewer, better<br />people<span class="accent">.</span></h1>
+      <p class="deck">
+        I take the CEO seat in privately held industrial companies, rebuild the
+        team and the operating system, and hand you back a business that runs
+        without you. Step up to owner. Step back from operator.
+      </p>
+      <div class="hero-dim">
+        <DimensionLine label="Client revenue" value="$10M–$100M" onDark />
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href="/engagements">How engagements work</a>
+        <a class="btn btn-quiet" href="/approach">The method</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- The situation -->
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">The situation</p>
+      <h2>You built it. Now everything still routes through you.</h2>
+      <div class="prose">
+        <p>
+          Pricing calls, hiring calls, the bank, the big customer, the
+          shop-floor dispute — all of it lands on your desk, because the
+          company was built around you and never rebuilt without you. The
+          management team executes; it doesn't decide. That is what makes the
+          business hard to leave and hard to sell.
+        </p>
+        <p>
+          This is not advice from the sidelines. I take the seat, run the
+          company for a defined term, and build the team and the systems until
+          the seat no longer needs me — or you.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="section principles-section">
+    <div class="wrap">
+      <p class="mono-label">The operating idea</p>
+      <h2>Four tenets</h2>
+      <ol class="principles">
+        {
+          principles.map(({ data, Content }) => (
+            <li>
+              <span class="principle-no" aria-hidden="true">
+                {String(data.number).padStart(2, '0')}
+              </span>
+              <div>
+                <h3>{data.title}</h3>
+                <div class="prose">
+                  <Content />
+                </div>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Engagements teaser -->
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">Engagements</p>
+      <h2>Four ways in. Every one designed to end.</h2>
+      <ul class="service-grid">
+        {
+          services.map((s) => (
+            <li class="service-card">
+              <h3>{s.data.name}</h3>
+              <p>{s.data.promise}</p>
+              <p class="mono-label">{s.data.typicalDuration}</p>
+            </li>
+          ))
+        }
+      </ul>
+      <p><a href="/engagements">Structure, scope, and fees →</a></p>
+    </div>
+  </section>
+
+  {
+    work.length > 0 && (
+      <section class="section">
+        <div class="wrap">
+          <p class="mono-label">Work</p>
+          <h2>Case studies</h2>
+          <ul class="work-list">
+            {work.map((w) => (
+              <li>
+                <a href={`/work/${w.id}`}>{w.data.title}</a>
+                <p class="mono-label">
+                  {w.data.client} · {w.data.engagementLength}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Contact CTA -->
+  <section class="section cta on-dark">
+    <div class="wrap">
+      <h2>If this sounds like your company</h2>
+      <p class="deck">
+        A first conversation is an hour, costs nothing, and stays between us.
+      </p>
+      <a class="btn" href="/contact">Get in touch</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: var(--space-2xl);
+  }
+
+  .kicker {
+    margin-bottom: var(--space-m);
+  }
+
+  .hero h1 {
+    max-width: 12ch;
+  }
+
+  .accent {
+    color: var(--brass);
+  }
+
+  .deck {
+    font-size: var(--step-1);
+    line-height: var(--leading-body);
+    max-width: 46ch;
+    margin-top: var(--space-m);
+  }
+
+  .hero-dim {
+    max-width: 28rem;
+    margin-top: var(--space-l);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: var(--space-xs) var(--space-m);
+    border: var(--hairline) solid var(--brass);
+    color: var(--paper);
+    background: transparent;
+  }
+
+  .btn:hover {
+    background: var(--brass);
+    color: var(--navy-deep);
+  }
+
+  .btn-quiet {
+    border-color: var(--dark-rule);
+  }
+
+  section h2 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-m);
+  }
+
+  .principles-section {
+    border-top: var(--hairline) solid var(--rule);
+    border-bottom: var(--hairline) solid var(--rule);
+  }
+
+  .principles {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  .principles li {
+    display: flex;
+    gap: var(--space-m);
+    max-width: var(--measure);
+  }
+
+  .principle-no {
+    font-family: var(--font-mono);
+    font-size: var(--step-1);
+    color: var(--brass-ink);
+    line-height: var(--leading-heading);
+  }
+
+  .principles h3 {
+    margin-bottom: var(--space-2xs);
+  }
+
+  .service-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--space-m);
+    margin-bottom: var(--space-m);
+  }
+
+  .service-card {
+    border: var(--hairline) solid var(--rule);
+    padding: var(--space-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .service-card .mono-label {
+    margin-top: auto;
+  }
+
+  .work-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .cta {
+    text-align: left;
+  }
+
+  .cta .deck {
+    margin-block: var(--space-s) var(--space-m);
+  }
+</style>

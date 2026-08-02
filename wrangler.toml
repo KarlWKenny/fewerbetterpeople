@@ -1,0 +1,7 @@
+# Cloudflare Pages configuration.
+# Deployment is via the Pages Git integration (see README), not `wrangler deploy`.
+# This file exists so Pages Functions in /functions pick up config, and so
+# local `wrangler pages dev dist` works when server endpoints are added later.
+name = "fewerbetterpeople"
+compatibility_date = "2026-08-01"
+pages_build_output_dir = "dist"

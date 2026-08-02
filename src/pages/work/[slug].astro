@@ -1,0 +1,138 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import DimensionLine from '../../components/DimensionLine.astro';
+import { getPublished, byOrder } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const work = (await getPublished('work')).sort(byOrder);
+  return work.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<Base title={d.title} description={d.situation} ogType="article">
+  <article class="section">
+    <div class="wrap">
+      <p class="mono-label">Case study</p>
+      <h1>{d.title}</h1>
+      <p class="client mono-label">{d.client} · {d.sector} · {d.revenueBand}</p>
+
+      <div class="case-dim">
+        <DimensionLine label="Engagement" value={d.engagementLength} />
+      </div>
+
+      <section class="block">
+        <h2>Situation</h2>
+        <p>{d.situation}</p>
+      </section>
+
+      <section class="block">
+        <h2>Intervention</h2>
+        <p>{d.intervention}</p>
+      </section>
+
+      <section class="block">
+        <h2>Outcome</h2>
+        <table class="outcomes">
+          <thead>
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Before</th>
+              <th scope="col">After</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              d.outcomes.map((o) => (
+                <tr>
+                  <th scope="row">{o.metric}</th>
+                  <td>{o.before}</td>
+                  <td>{o.after}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </section>
+
+      {
+        d.pullQuote && (
+          <blockquote class="pull-quote">
+            <p>{d.pullQuote}</p>
+          </blockquote>
+        )
+      }
+
+      <div class="prose block">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    max-width: 24ch;
+  }
+
+  .client {
+    margin-top: var(--space-xs);
+  }
+
+  .case-dim {
+    max-width: 26rem;
+    margin-top: var(--space-l);
+  }
+
+  .block {
+    margin-top: var(--space-xl);
+    max-width: var(--measure);
+  }
+
+  .block h2 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-s);
+  }
+
+  .outcomes {
+    border-collapse: collapse;
+    width: 100%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .outcomes th,
+  .outcomes td {
+    text-align: left;
+    padding: var(--space-xs) var(--space-s) var(--space-xs) 0;
+    border-bottom: var(--hairline) solid var(--rule);
+  }
+
+  .outcomes thead th {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+
+  .outcomes td {
+    font-family: var(--font-mono);
+  }
+
+  .pull-quote {
+    margin-top: var(--space-xl);
+    border-left: 2px solid var(--accent);
+    padding-left: var(--space-m);
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: var(--step-2);
+    line-height: var(--leading-heading);
+    max-width: 30ch;
+  }
+</style>

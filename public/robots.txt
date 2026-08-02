@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fewerbetterpeople.ca/sitemap-index.xml

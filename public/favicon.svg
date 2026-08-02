@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dimension-line mark: hairline with tick terminations, brass on navy -->
+  <rect width="32" height="32" rx="4" fill="#202834"/>
+  <g stroke="#b08a3c" stroke-width="1.5">
+    <line x1="6" y1="10" x2="6" y2="22"/>
+    <line x1="26" y1="10" x2="26" y2="22"/>
+    <line x1="6" y1="16" x2="26" y2="16"/>
+  </g>
+</svg>

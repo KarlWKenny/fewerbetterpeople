@@ -1,0 +1,64 @@
+/* Design tokens — the single source of truth. Every color, size, and space
+   value used anywhere on the site is defined here. If you need a value that
+   isn't here, add a token; don't hardcode. Full rationale in CLAUDE.md. */
+
+:root {
+  /* ---- Palette (6 named values, nothing else) ------------------------- */
+  --navy: #202834;        /* graphite navy — the ground */
+  --navy-deep: #161c25;   /* darker navy for depth on dark sections */
+  --brass: #b08a3c;       /* the single accent. Use rarely, so it means something. */
+  --brass-ink: #7f6122;   /* darker brass for TEXT on paper (≥4.5:1 contrast); --brass fails AA on light ground */
+  --paper: #f5f2ea;       /* warm off-white */
+  --slate: #57606d;       /* mid grey — secondary text on paper */
+  --mist: #c9ccd1;        /* light grey — hairlines, borders */
+
+  /* ---- Semantic aliases ----------------------------------------------- */
+  --bg: var(--paper);
+  --ink: var(--navy);
+  --ink-2: var(--slate);
+  --rule: var(--mist);
+  --accent: var(--brass);
+
+  /* On dark (hero, footer) sections, components read these via .on-dark */
+  --dark-bg: var(--navy);
+  --dark-ink: var(--paper);
+  --dark-ink-2: #9aa3ae;  /* --mist is too bright for secondary text on navy */
+  --dark-rule: #39424e;
+
+  /* ---- Type families --------------------------------------------------- */
+  --font-display: 'Space Grotesk', 'Space Grotesk Fallback', Arial, sans-serif;
+  --font-body: 'IBM Plex Sans', 'IBM Plex Sans Fallback', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'IBM Plex Mono Fallback', 'Courier New', monospace;
+
+  /* ---- Modular type scale ----------------------------------------------
+     Minor third (1.2) at 360px growing toward major third (1.25) on desktop.
+     Fluid via clamp; nothing outside this scale. */
+  --step--1: clamp(0.8331rem, 0.81rem + 0.12vw, 0.9rem);
+  --step-0: clamp(1rem, 0.9565rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.13rem + 0.33vw, 1.4063rem);
+  --step-2: clamp(1.44rem, 1.3rem + 0.65vw, 1.8531rem);
+  --step-3: clamp(1.728rem, 1.5rem + 1.1vw, 2.4413rem);
+  --step-4: clamp(2.0736rem, 1.7rem + 1.85vw, 3.2519rem);
+  --step-5: clamp(2.4883rem, 1.85rem + 3.1vw, 4.4056rem);
+
+  --tracking-tight: -0.022em;  /* display sizes only */
+  --tracking-mono: 0.08em;     /* mono labels, uppercase */
+  --leading-tight: 1.08;
+  --leading-heading: 1.2;
+  --leading-body: 1.6;
+
+  /* ---- Space scale ------------------------------------------------------ */
+  --space-2xs: 0.375rem;
+  --space-xs: 0.625rem;
+  --space-s: 1rem;
+  --space-m: 1.5rem;
+  --space-l: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: clamp(4.5rem, 3.5rem + 5vw, 7.5rem);
+
+  /* ---- Layout ----------------------------------------------------------- */
+  --site-max: 70rem;
+  --measure: 62ch;       /* max line length for body prose */
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --hairline: 1px;
+}

@@ -1,0 +1,84 @@
+/* Self-hosted fonts (no CDN). Files live in /public/fonts, licensed under the
+   SIL Open Font License (see public/fonts/LICENSE.md).
+
+   The *Fallback faces below are metric-matched local fonts (Arial / Courier
+   New) with size-adjust and vertical overrides computed from the real font
+   files, so text set in the fallback occupies the same space as the webfont
+   and swapping causes zero layout shift. Recompute if font files change
+   (see README "Fonts"). */
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/space-grotesk-latin-700-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-400-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+}
+
+/* Metric-matched fallbacks — computed 2026-08-02 with fontkit */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 110.57%;
+  ascent-override: 88.99%;
+  descent-override: 26.41%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Fallback';
+  src: local('Arial');
+  size-adjust: 100.95%;
+  ascent-override: 101.54%;
+  descent-override: 27.24%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'IBM Plex Mono Fallback';
+  src: local('Courier New');
+  size-adjust: 99.98%;
+  ascent-override: 102.52%;
+  descent-override: 27.5%;
+  line-gap-override: 0%;
+}

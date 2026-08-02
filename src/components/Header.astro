@@ -1,0 +1,87 @@
+---
+// /writing is built but deliberately absent from NAV until there are ~3
+// articles — see CLAUDE.md "Flipping /writing on".
+const NAV = [
+  { href: '/about', label: 'About' },
+  { href: '/approach', label: 'Approach' },
+  { href: '/engagements', label: 'Engagements' },
+  { href: '/work', label: 'Work' },
+  { href: '/contact', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`);
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="wordmark" href="/">fewer, better people<span class="wordmark-dot">.</span></a>
+    <nav aria-label="Main">
+      <ul>
+        {
+          NAV.map(({ href, label }) => (
+            <li>
+              <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: var(--hairline) solid var(--rule);
+  }
+
+  .bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-xs) var(--space-m);
+    padding-block: var(--space-s);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+    letter-spacing: var(--tracking-tight);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .wordmark-dot {
+    color: var(--accent);
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s) var(--space-m);
+    list-style: none;
+    padding: 0;
+  }
+
+  nav a {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-2);
+  }
+
+  nav a:hover {
+    color: var(--ink);
+  }
+
+  nav a[aria-current='page'] {
+    color: var(--ink);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 2px;
+  }
+</style>

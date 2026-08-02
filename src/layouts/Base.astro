@@ -1,0 +1,99 @@
+---
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path under /public, e.g. '/og/default.png'. Per-page images follow /og/<slug>.png. */
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** rel=canonical override, for articles cross-posted elsewhere */
+  canonicalUrl?: string;
+  /** Keep a built-but-unannounced page (e.g. /writing while hidden) out of search */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og/default.png',
+  ogType = 'website',
+  canonicalUrl,
+  noindex = false,
+} = Astro.props;
+
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, Astro.site).href;
+const ogImageUrl = new URL(ogImage, Astro.site).href;
+const fullTitle =
+  Astro.url.pathname === '/' ? title : `${title} — fewer, better people`;
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="fewer, better people — writing"
+      href={new URL('/rss.xml', Astro.site).href}
+    />
+
+    <!-- Above-the-fold fonts; the rest load on use -->
+    <link
+      rel="preload"
+      href="/fonts/space-grotesk-latin-700-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-sans-latin-400-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/ibm-plex-mono-latin-500-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="fewer, better people" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <!-- Analytics: Cloudflare Web Analytics only, enabled in the CF dashboard
+         (no script tag needed when proxied through Cloudflare). No other
+         third-party scripts — see CLAUDE.md "Do not". -->
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

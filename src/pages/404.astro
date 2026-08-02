@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not found" description="That page doesn't exist." noindex>
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">404</p>
+      <h1>Not here.</h1>
+      <p>
+        That page doesn't exist. Try the <a href="/">home page</a> or
+        <a href="/contact">get in touch</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-m);
+  }
+</style>

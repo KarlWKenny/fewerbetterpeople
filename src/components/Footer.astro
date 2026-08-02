@@ -1,0 +1,70 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer on-dark">
+  <div class="wrap inner">
+    <div>
+      <p class="name">Karl Kenny, P.Eng.</p>
+      <p class="role mono-label">Interim &amp; fractional CEO — industrial mid-market</p>
+    </div>
+    <ul class="links">
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/engagements">Engagements</a></li>
+      <!-- TODO: add LinkedIn profile URL -->
+    </ul>
+  </div>
+  <div class="wrap legal">
+    <p class="mono-label">&copy; {year} Karl Kenny · fewerbetterpeople.ca</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--navy-deep);
+  }
+
+  .inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-m);
+    padding-block: var(--space-xl) var(--space-l);
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--step-1);
+  }
+
+  .role {
+    margin-top: var(--space-2xs);
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .links a {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark-ink-2);
+  }
+
+  .links a:hover {
+    color: var(--dark-ink);
+  }
+
+  .legal {
+    border-top: var(--hairline) solid var(--dark-rule);
+    padding-block: var(--space-s);
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+import { render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import DimensionLine from '../components/DimensionLine.astro';
+import { getPublished, byOrder } from '../lib/content';
+
+const services = await Promise.all(
+  (await getPublished('services')).sort(byOrder).map(async (s) => {
+    const { Content } = await render(s);
+    return { data: s.data, Content };
+  }),
+);
+---
+
+<Base
+  title="Engagements"
+  description="How an engagement is structured, scoped, and priced — interim CEO, fractional CEO, operating system install, and exit readiness."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">Engagements</p>
+      <h1>Structure, scope, fees.</h1>
+      <p class="intro">
+        Every engagement has a defined scope, a defined rhythm, and a defined
+        end. Fee ranges are below — exact terms depend on the situation, and we
+        settle them in conversation, not in a proposal deck.
+      </p>
+
+      <div class="services">
+        {
+          services.map(({ data, Content }) => (
+            <article class="service">
+              <header>
+                <h2>{data.name}</h2>
+                <p class="promise">{data.promise}</p>
+              </header>
+              <dl>
+                <div>
+                  <dt class="mono-label">Who it's for</dt>
+                  <dd>{data.whoFor}</dd>
+                </div>
+                <div>
+                  <dt class="mono-label">What's included</dt>
+                  <dd>
+                    <ul>
+                      {data.includes.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+              <div class="service-dims">
+                <DimensionLine label="Typical duration" value={data.typicalDuration} />
+                {data.pricing && <DimensionLine label="Fees" value={data.pricing} />}
+              </div>
+              <div class="prose">
+                <Content />
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-m);
+  }
+
+  .intro {
+    margin-bottom: var(--space-xl);
+  }
+
+  .services {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .service {
+    border-top: var(--hairline) solid var(--rule);
+    padding-top: var(--space-l);
+    display: grid;
+    gap: var(--space-m);
+    max-width: var(--measure);
+  }
+
+  .promise {
+    font-size: var(--step-1);
+    margin-top: var(--space-2xs);
+  }
+
+  dl {
+    display: grid;
+    gap: var(--space-s);
+  }
+
+  dd {
+    margin: 0;
+  }
+
+  dd ul {
+    padding-left: 1.2em;
+  }
+
+  .service-dims {
+    display: grid;
+    gap: var(--space-s);
+    max-width: 30rem;
+  }
+</style>

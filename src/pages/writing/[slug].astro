@@ -1,0 +1,58 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getPublished, byDateDesc, formatDate } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const articles = (await getPublished('writing')).sort(byDateDesc);
+  return articles.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const d = entry.data;
+---
+
+<Base
+  title={d.title}
+  description={d.deck}
+  ogType="article"
+  canonicalUrl={d.canonicalUrl}
+  noindex
+>
+  <article class="section">
+    <div class="wrap">
+      <p class="mono-label">
+        {formatDate(d.publishDate)} · {d.readingTime} min read
+      </p>
+      <h1>{d.title}</h1>
+      <p class="deck">{d.deck}</p>
+      {
+        d.updatedDate && (
+          <p class="mono-label">Updated {formatDate(d.updatedDate)}</p>
+        )
+      }
+      <div class="prose body">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    max-width: 24ch;
+  }
+
+  .deck {
+    font-size: var(--step-1);
+    margin-top: var(--space-s);
+    max-width: 46ch;
+  }
+
+  .body {
+    margin-top: var(--space-l);
+    max-width: var(--measure);
+  }
+</style>

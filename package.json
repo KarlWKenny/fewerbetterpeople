@@ -1,0 +1,27 @@
+{
+  "name": "fewerbetterpeople",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "fewerbetterpeople.ca — interim & fractional CEO for the industrial mid-market",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^6.0.2",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.6",
+    "preact": "^10.29.8"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "typescript": "^6.0.3"
+  }
+}

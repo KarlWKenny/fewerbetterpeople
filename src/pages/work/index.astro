@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPublished, byOrder } from '../../lib/content';
+
+const work = (await getPublished('work')).sort(byOrder);
+---
+
+<Base
+  title="Work"
+  description="Case studies from interim and fractional CEO engagements in the industrial mid-market."
+>
+  <section class="section">
+    <div class="wrap">
+      <p class="mono-label">Work</p>
+      <h1>Case studies.</h1>
+      {
+        work.length === 0 ? (
+          <p>
+            Case studies are being written up — anonymized, with the owners'
+            consent. Until then, <a href="/contact">ask me directly</a> about
+            past engagements.
+          </p>
+        ) : (
+          <ul class="work-list">
+            {work.map((w) => (
+              <li>
+                <h2>
+                  <a href={`/work/${w.id}`}>{w.data.title}</a>
+                </h2>
+                <p class="mono-label">
+                  {w.data.client} · {w.data.sector} · {w.data.engagementLength}
+                </p>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 {
+    margin-top: var(--space-2xs);
+    margin-bottom: var(--space-m);
+  }
+
+  .work-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: var(--space-l);
+  }
+
+  .work-list h2 {
+    font-size: var(--step-2);
+  }
+
+  .work-list .mono-label {
+    margin-top: var(--space-2xs);
+  }
+</style>

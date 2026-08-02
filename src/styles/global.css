@@ -1,0 +1,172 @@
+/* Global styles. Tokens come from tokens.css; nothing here invents values. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---- Headings --------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--step-5);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--step-3);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3 {
+  font-size: var(--step-1);
+}
+
+p,
+li {
+  max-width: var(--measure);
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-color: var(--accent);
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* ---- Focus ------------------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--brass-ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.on-dark :focus-visible,
+.on-dark:focus-visible {
+  outline-color: var(--brass);
+}
+
+/* ---- Layout primitives ------------------------------------------------ */
+.wrap {
+  max-width: var(--site-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--space-2xl);
+}
+
+.on-dark {
+  background: var(--dark-bg);
+  color: var(--dark-ink);
+}
+
+/* ---- Mono labels (kickers, annotations, figures) ---------------------- */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.on-dark .mono-label {
+  color: var(--dark-ink-2);
+}
+
+/* ---- Prose (markdown bodies) ------------------------------------------ */
+.prose > * + * {
+  margin-top: var(--space-s);
+}
+
+.prose h2 {
+  margin-top: var(--space-l);
+}
+
+.prose h3 {
+  margin-top: var(--space-m);
+}
+
+/* ---- Skip link --------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-s);
+  top: var(--space-s);
+  z-index: 10;
+  background: var(--navy);
+  color: var(--paper);
+  padding: var(--space-xs) var(--space-s);
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  transform: translateY(-300%);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+}
+
+/* ---- Motion ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,69 @@
+---
+/**
+ * The signature device: an engineering dimension line — hairline rule with
+ * tick terminations and a mono callout. It annotates a REAL quantity
+ * (engagement length, headcount, revenue band). If it isn't measuring
+ * something true, don't use it. Never pure decoration.
+ */
+interface Props {
+  label: string;
+  value: string;
+  /** Set when placed on a navy section */
+  onDark?: boolean;
+}
+const { label, value, onDark = false } = Astro.props;
+---
+
+<div class:list={['dim', { 'dim-dark': onDark }]} role="img" aria-label={`${label}: ${value}`}>
+  <span class="dim-rule" aria-hidden="true"></span>
+  <span class="dim-callout" aria-hidden="true">{label}&thinsp;—&thinsp;{value}</span>
+  <span class="dim-rule" aria-hidden="true"></span>
+</div>
+
+<style>
+  .dim {
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+    color: var(--ink-2);
+  }
+
+  .dim-dark {
+    color: var(--dark-ink-2);
+  }
+
+  .dim-callout {
+    font-family: var(--font-mono);
+    font-size: var(--step--1);
+    font-weight: 500;
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .dim-rule {
+    flex: 1;
+    height: var(--hairline);
+    background: currentColor;
+    position: relative;
+    min-width: 1.5rem;
+  }
+
+  /* Tick terminations at the outer ends, like a shop drawing */
+  .dim-rule::before {
+    content: '';
+    position: absolute;
+    top: -0.3rem;
+    width: var(--hairline);
+    height: 0.65rem;
+    background: currentColor;
+  }
+
+  .dim-rule:first-child::before {
+    left: 0;
+  }
+
+  .dim-rule:last-child::before {
+    right: 0;
+  }
+</style>
