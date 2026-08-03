@@ -5,6 +5,11 @@ import preact from '@astrojs/preact';
 
 export default defineConfig({
   site: 'https://fewerbetterpeople.ca',
+  build: {
+    // Inline all CSS — the stylesheet is small and this removes a
+    // render-blocking request, which is worth ~0.5s LCP on mobile networks.
+    inlineStylesheets: 'always',
+  },
   integrations: [
     preact(),
     sitemap({
