@@ -1,17 +1,13 @@
 ---
 name: Interim Executive
 promise: I take the seat full-time for a defined term and run the company until it no longer needs me.
-whoFor: "TODO: owner situation this fits — e.g. sudden departure, turnaround, or an owner who needs out of the chair now."
+whoFor: You need help now and want someone to take over for a period
 includes:
   - Full operating authority, agreed scope, defined end date
   - Organization and role redesign
   - Operating system install (cadence, scorecards, reporting)
   - Management team development and succession
-  - "TODO: confirm remaining inclusions"
-pricing: "TODO: fee range, e.g. $XX–$XX / month"
+pricing: "$30K–$40K / month"
 order: 1
 draft: false
 ---
-
-TODO: One paragraph on how an interim engagement starts, runs, and ends. Plain
-verbs, specific claims. Written for an owner who is skeptical of consultants.
