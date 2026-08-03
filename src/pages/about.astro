@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import DimensionLine from '../components/DimensionLine.astro';
 ---
 
 <Base
@@ -13,26 +12,14 @@ import DimensionLine from '../components/DimensionLine.astro';
       <h1>Karl Kenny</h1>
 
       <div class="prose bio">
+        <p>At 16, I decided to be an engineer.</p>
+        <p>At 29, I became a leader.</p>
+        <p>At 45, I tried to be an Entrepreneur.</p>
         <p>
-          <!-- TODO: real bio. Do not invent credentials, employers, or numbers.
-               Cover: the 30 years across public, private, and PE companies,
-               operating history (companies run, sectors, sizes), why
-               owner-led companies, why Integrator work. -->
-          TODO: Two or three paragraphs of biography. The operating history,
-          the companies actually run, and what that looked like from the seat —
-          written plainly, for an owner who has met a lot of consultants.
+          At 50, I realized I'm an excellent Integrator, a really good
+          partner, coach and mentor to entrepreneurs.
         </p>
-        <p>
-          TODO: How I work — on-site presence, cadence, what the first thirty
-          days look like, what I refuse to do.
-        </p>
-      </div>
-
-      <div class="facts">
-        <!-- Dimension lines annotate real quantities only. Fill with true
-             numbers or delete the line — never estimate here. -->
-        <DimensionLine label="Years operating" value="TODO" />
-        <DimensionLine label="Companies run" value="TODO" />
+        <p>I aspire to help Owners be Owners, not Operators.</p>
       </div>
     </div>
   </section>
@@ -46,12 +33,5 @@ import DimensionLine from '../components/DimensionLine.astro';
 
   .bio {
     max-width: var(--measure);
-  }
-
-  .facts {
-    max-width: 28rem;
-    display: grid;
-    gap: var(--space-m);
-    margin-top: var(--space-xl);
   }
 </style>
