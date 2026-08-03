@@ -7,7 +7,7 @@ export const GET: APIRoute = async (context) => {
   return rss({
     title: 'fewer, better people — writing',
     description:
-      'Articles on running mid-market industrial companies: fewer, better people; operating cadence; and getting the owner out of the operator seat.',
+      'Articles on running owner-led companies: fewer, better people; operating cadence; and getting the owner out of the operator seat.',
     site: context.site!,
     items: articles.map((a) => ({
       title: a.data.title,

@@ -6,11 +6,12 @@ changing anything. When in doubt, do less.
 
 ## Positioning and audience
 
-Karl Kenny works directly for owners of privately held mid-market
-companies — mostly industrial manufacturers, capital equipment, and adjacent
-trades, $10M–$100M revenue — as a **Professional Integrator** (the public
-label, chosen 2026-08-03; the engagements themselves span interim CEO to
-fractional/integrator seats). Not advice:
+Karl Kenny works directly for owners of privately held **owner-led
+companies** — typically $10M–$100M revenue — as a **Professional
+Integrator** (the public label since 2026-08-03; "industrial mid-market"
+framing was dropped the same day). The engagement types are: Interim
+Executive, Fractional Integrator, Operating system install, Exit. Not
+advice:
 he takes the seat, sets the organization, defines the roles, installs the
 operating system (EOS/Traction cadence, scorecards, comp design, reporting),
 deploys AI tooling against non-value-add work, and builds the management
@@ -33,6 +34,9 @@ decision must be legible to that man on a phone in a truck cab.**
   "solutions", "passionate". If it sounds like a consultancy wrote it, cut it.
 - Short sentences. Concrete nouns. Numbers where they're true, silence where
   they aren't.
+- Karl capitalizes his brand terms in running copy — Owner, Operator,
+  Entrepreneur, Integrator, Strategy. Keep that convention; don't
+  "correct" it to lowercase.
 - Never invent clients, results, testimonials, logos, or credentials. Real
   facts or a `TODO:` marker — nothing in between.
 

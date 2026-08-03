@@ -1,7 +1,7 @@
 # fewerbetterpeople.ca
 
-Site for Karl Kenny — professional integrator for the industrial
-mid-market. Astro, static output, Cloudflare Pages.
+Site for Karl Kenny — Professional Integrator for owner-led companies.
+Astro, static output, Cloudflare Pages.
 
 Read `CLAUDE.md` before making changes — it encodes the design system, voice,
 and the decisions that are expensive to reverse.
