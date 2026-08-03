@@ -8,7 +8,9 @@ changing anything. When in doubt, do less.
 
 Karl Kenny works directly for owners of privately held mid-market
 companies — mostly industrial manufacturers, capital equipment, and adjacent
-trades, $10M–$100M revenue — as an **interim or fractional CEO**. Not advice:
+trades, $10M–$100M revenue — as a **Professional Integrator** (the public
+label, chosen 2026-08-03; the engagements themselves span interim CEO to
+fractional/integrator seats). Not advice:
 he takes the seat, sets the organization, defines the roles, installs the
 operating system (EOS/Traction cadence, scorecards, comp design, reporting),
 deploys AI tooling against non-value-add work, and builds the management

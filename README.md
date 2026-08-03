@@ -1,6 +1,6 @@
 # fewerbetterpeople.ca
 
-Site for Karl Kenny — interim & fractional CEO for the industrial
+Site for Karl Kenny — professional integrator for the industrial
 mid-market. Astro, static output, Cloudflare Pages.
 
 Read `CLAUDE.md` before making changes — it encodes the design system, voice,
