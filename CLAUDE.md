@@ -145,12 +145,15 @@ collections through that helper.
   command: `scripts/og-template.html` and README "OG images".
 - Sitemap auto-generated; RSS at `/rss.xml` (writing only).
 
-## Flipping /writing on (when there are ~3 articles)
+## Flipping hidden sections on
 
-1. Add `{ href: '/writing', label: 'Writing' }` to NAV in `Header.astro`.
-2. Remove the `filter` from `sitemap()` in `astro.config.mjs`.
-3. Remove `noindex` from `src/pages/writing/index.astro` and
-   `src/pages/writing/[slug].astro`.
+`/writing` (hidden until ~3 articles) and `/work` (hidden until there are
+real case studies, 2026-08-03) are built but not announced. To flip one on:
+
+1. Add its entry to NAV in `Header.astro`
+   (`{ href: '/writing', label: 'Writing' }` / `{ href: '/work', label: 'Work' }`).
+2. Remove it from the sitemap `filter` in `astro.config.mjs`.
+3. Remove `noindex` from its `index.astro` and `[slug].astro` pages.
 
 ## Commit conventions
 

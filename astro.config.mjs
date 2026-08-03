@@ -8,9 +8,10 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
-      // /writing is built but hidden until there are ~3 articles.
-      // When it goes live: delete this filter (see CLAUDE.md "Flipping /writing on").
-      filter: (page) => !page.includes('/writing'),
+      // /writing and /work are built but hidden until there is real content.
+      // When one goes live: remove it here (see CLAUDE.md "Flipping hidden
+      // sections on").
+      filter: (page) => !page.includes('/writing') && !page.includes('/work'),
     }),
   ],
 });
