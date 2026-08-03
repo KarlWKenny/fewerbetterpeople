@@ -8,18 +8,18 @@
    (see README "Fonts"). */
 
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Barlow';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('/fonts/space-grotesk-latin-500-normal.woff2') format('woff2');
+  src: url('/fonts/barlow-latin-500-normal.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Space Grotesk';
+  font-family: 'Barlow';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/space-grotesk-latin-700-normal.woff2') format('woff2');
+  src: url('/fonts/barlow-latin-700-normal.woff2') format('woff2');
 }
 @font-face {
   font-family: 'IBM Plex Sans';
@@ -57,13 +57,13 @@
   src: url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
 }
 
-/* Metric-matched fallbacks — computed 2026-08-02 with fontkit */
+/* Metric-matched fallbacks — computed 2026-08-03 with fontkit */
 @font-face {
-  font-family: 'Space Grotesk Fallback';
+  font-family: 'Barlow Fallback';
   src: local('Arial');
-  size-adjust: 110.57%;
-  ascent-override: 88.99%;
-  descent-override: 26.41%;
+  size-adjust: 99.51%;
+  ascent-override: 100.49%;
+  descent-override: 20.1%;
   line-gap-override: 0%;
 }
 @font-face {

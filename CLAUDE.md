@@ -6,7 +6,7 @@ changing anything. When in doubt, do less.
 
 ## Positioning and audience
 
-Karl Kenny, P.Eng. works directly for owners of privately held mid-market
+Karl Kenny works directly for owners of privately held mid-market
 companies — mostly industrial manufacturers, capital equipment, and adjacent
 trades, $10M–$100M revenue — as an **interim or fractional CEO**. Not advice:
 he takes the seat, sets the organization, defines the roles, installs the
@@ -85,8 +85,9 @@ pull-quote rule. If brass starts appearing everywhere, it means nothing.
 
 Type:
 
-- Display: Space Grotesk 700 (500 for pull quotes), tight tracking
-  (`--tracking-tight: -0.022em`) at large sizes.
+- Display: Barlow 700 (500 for pull quotes), tight tracking
+  (`--tracking-tight: -0.012em`) at large sizes. (Was Space Grotesk;
+  Karl rejected it 2026-08-03 — don't reintroduce it.)
 - Body: IBM Plex Sans 400/600.
 - Mono: IBM Plex Mono 400/500 — labels, figures, dimension callouts,
   uppercase with `--tracking-mono: 0.08em`.

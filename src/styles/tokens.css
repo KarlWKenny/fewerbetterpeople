@@ -26,7 +26,7 @@
   --dark-rule: #39424e;
 
   /* ---- Type families --------------------------------------------------- */
-  --font-display: 'Space Grotesk', 'Space Grotesk Fallback', Arial, sans-serif;
+  --font-display: 'Barlow', 'Barlow Fallback', Arial, sans-serif;
   --font-body: 'IBM Plex Sans', 'IBM Plex Sans Fallback', Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', 'IBM Plex Mono Fallback', 'Courier New', monospace;
 
@@ -41,7 +41,7 @@
   --step-4: clamp(2.0736rem, 1.7rem + 1.85vw, 3.2519rem);
   --step-5: clamp(2.4883rem, 1.85rem + 3.1vw, 4.4056rem);
 
-  --tracking-tight: -0.022em;  /* display sizes only */
+  --tracking-tight: -0.012em;  /* display sizes only — Barlow is already narrow, don't over-tighten */
   --tracking-mono: 0.08em;     /* mono labels, uppercase */
   --leading-tight: 1.08;
   --leading-heading: 1.2;
