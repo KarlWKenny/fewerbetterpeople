@@ -48,8 +48,10 @@ decision must be legible to that man on a phone in a truck cab.**
   (`src/content.config.ts`). Nothing recurring gets hand-authored as a page.
 - Vanilla CSS with custom properties. No Tailwind, no CSS-in-JS. Tokens live
   in `src/styles/tokens.css` and nowhere else.
-- Cloudflare Pages via Git integration. Server endpoints go in `/functions`
-  (Pages Functions) when needed.
+- Cloudflare Workers (static assets) via the Workers Builds Git integration —
+  pushes to main deploy automatically. Server endpoints later: add
+  `main = "src/worker.ts"` to `wrangler.toml` with
+  `run_worker_first = ["/api/*"]` under `[assets]` — no host migration.
 - No third-party scripts. No font CDN (fonts self-hosted in `/public/fonts`).
   Analytics via Cloudflare Web Analytics only.
 

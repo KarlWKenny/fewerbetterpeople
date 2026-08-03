@@ -1,7 +1,13 @@
-# Cloudflare Pages configuration.
-# Deployment is via the Pages Git integration (see README), not `wrangler deploy`.
-# This file exists so Pages Functions in /functions pick up config, and so
-# local `wrangler pages dev dist` works when server endpoints are added later.
+# Cloudflare Workers configuration — static assets deployment.
+# Deployed by Workers Builds (Git integration): build command `npm run build`,
+# deploy command `npx wrangler deploy`. Pushes to main go to production.
+#
+# Server endpoints later: add `main = "src/worker.ts"` here plus
+# `run_worker_first = ["/api/*"]` under [assets], and write the endpoints in
+# that worker script. No host migration needed.
 name = "fewerbetterpeople"
 compatibility_date = "2026-08-01"
-pages_build_output_dir = "dist"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"

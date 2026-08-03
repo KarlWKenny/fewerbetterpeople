@@ -8,9 +8,9 @@ import { useState } from 'preact/hooks';
  *    the owner (approvals, pricing, hiring, customer relationships, cash).
  *  - Produces a score band ("operator" → "owner") with a short read-out
  *    per band, rendered client-side.
- *  - Captures an email to send the full result; POST to a Pages Function
- *    at /functions/api/diagnostic.ts (does not exist yet — see README
- *    "Server endpoints"). No third-party form service.
+ *  - Captures an email to send the full result; POST to a Worker endpoint
+ *    at /api/diagnostic (does not exist yet — see wrangler.toml for how
+ *    endpoints get added). No third-party form service.
  *  - Plain language throughout; no gamification, no animated counters.
  *
  * This component is loaded with client:visible on /tools/owner-operator-

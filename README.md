@@ -76,16 +76,18 @@ Regenerate from the template:
 link check on every PR. Deployment is **not** done by Actions — Cloudflare
 Pages builds from Git.
 
-## Deploy — Cloudflare Pages (manual setup, one time)
+## Deploy — Cloudflare Workers (Git integration, one-time setup)
 
-1. Cloudflare dashboard → Workers & Pages → Create → Pages →
-   connect the `KarlWKenny/fewerbetterpeople` GitHub repo.
-2. Build settings: framework preset **Astro**, build command `npm run build`,
-   output directory `dist`. Node version 22 (set `NODE_VERSION=22` env var).
-3. Custom domain: add apex `fewerbetterpeople.ca` (Pages will create the
-   CNAME/flattened record on the zone).
-4. Server endpoints later: files in `/functions` deploy automatically as
-   Pages Functions — no host migration needed.
+1. Cloudflare dashboard → Workers & Pages → Create → import the
+   `KarlWKenny/fewerbetterpeople` GitHub repo (Workers git flow).
+2. Project name `fewerbetterpeople`, build command `npm run build`,
+   deploy command `npx wrangler deploy` (config comes from `wrangler.toml`;
+   Node version from `.nvmrc`).
+3. Custom domains: in the Worker → Settings → Domains & Routes → add
+   `fewerbetterpeople.ca` and `www.fewerbetterpeople.ca`.
+4. Server endpoints later: add `main = "src/worker.ts"` to `wrangler.toml`
+   with `run_worker_first = ["/api/*"]` under `[assets]` — endpoints deploy
+   with the same push, no host migration.
 
 ### DNS / redirects (apply in the Cloudflare dashboard)
 
@@ -94,8 +96,9 @@ Canonical host is the **apex** `fewerbetterpeople.ca`.
 - `www.fewerbetterpeople.ca` → 301 to apex. Easiest: a Redirect Rule on the
   zone — `(http.host eq "www.fewerbetterpeople.ca")` → dynamic
   `concat("https://fewerbetterpeople.ca", http.request.uri.path)`, 301,
-  preserve query string — plus a proxied `AAAA 100::` (or CNAME to the
-  Pages project) record for `www` so the rule has something to attach to.
+  preserve query string — with `www` either added as a Worker custom domain
+  or given a proxied `AAAA 100::` record so the rule has something to
+  attach to.
 - `ownernotoperator.ca` (and `www.` thereof): add the zone to the same
   Cloudflare account, proxied placeholder record, same-style Redirect Rule
   to `https://fewerbetterpeople.ca` (301).
