@@ -1,6 +1,6 @@
 ---
-name: Exit readiness
-promise: I make the company saleable by making it run without you — whether you sell it or keep it.
+name: Exit
+promise: I make the company saleable with clean data, process and financials. I stay with you through the Due Diligence, Negotiations and handover.
 whoFor: "TODO: owner situation this fits — e.g. 2–5 years from an intended exit, or told by a buyer the business is too owner-dependent."
 includes:
   - Owner-dependence audit — what actually routes through you, measured
@@ -8,7 +8,6 @@ includes:
   - Reporting a buyer's diligence team will believe
   - Transition plan with dates, not intentions
   - "TODO: confirm remaining inclusions"
-typicalDuration: "TODO: e.g. 12–24 months"
 pricing: "TODO: fee range"
 order: 4
 draft: false

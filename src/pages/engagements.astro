@@ -51,7 +51,9 @@ const services = await Promise.all(
                 </div>
               </dl>
               <div class="service-dims">
-                <DimensionLine label="Typical duration" value={data.typicalDuration} />
+                {data.typicalDuration && (
+                  <DimensionLine label="Typical duration" value={data.typicalDuration} />
+                )}
                 {data.pricing && <DimensionLine label="Fees" value={data.pricing} />}
               </div>
               <div class="prose">

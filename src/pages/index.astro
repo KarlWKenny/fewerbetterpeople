@@ -21,15 +21,25 @@ const work = (await getPublished('work')).sort(byOrder);
   <!-- Hero: the one place the design spends its boldness -->
   <section class="hero on-dark">
     <div class="wrap">
-      <p class="mono-label kicker">Professional Integrator — industrial mid-market</p>
+      <p class="mono-label kicker">Professional Integrator for owner led companies</p>
       <h1>Fewer, better<br />people<span class="accent">.</span></h1>
-      <p class="deck">
-        I take the CEO seat in privately held industrial companies, rebuild the
-        team and the operating system, and hand you back a business that runs
-        without you. Step up to owner. Step back from operator.
-      </p>
+      <div class="deck">
+        <p>
+          Companies run better when the right people are in the right roles
+          delivering real value.
+        </p>
+        <p>
+          Organizing people, process, and tools for scalable efficient
+          operations is a skillset that enables the C suite to run the
+          business.
+        </p>
+        <p>
+          Fewer, better people builds disciplined management capability, so
+          Owners can be owners not Operators.
+        </p>
+      </div>
       <div class="hero-dim">
-        <DimensionLine label="Client revenue" value="$10M–$100M" onDark />
+        <DimensionLine label="Typical client revenue" value="$10M–$100M" onDark />
       </div>
       <div class="hero-actions">
         <a class="btn" href="/engagements">How engagements work</a>
@@ -42,19 +52,31 @@ const work = (await getPublished('work')).sort(byOrder);
   <section class="section">
     <div class="wrap">
       <p class="mono-label">The situation</p>
-      <h2>You built it. Now everything still routes through you.</h2>
+      <h2>You're an Entrepreneur stuck in the role of an Operator.</h2>
       <div class="prose">
         <p>
-          Pricing calls, hiring calls, the bank, the big customer, the
-          shop-floor dispute — all of it lands on your desk, because the
-          company was built around you and never rebuilt without you. The
-          management team executes; it doesn't decide. That is what makes the
-          business hard to leave and hard to sell.
+          Your vision, your idea's, when you started the company you could run
+          everything, you had to.
         </p>
         <p>
-          This is not advice from the sidelines. I take the seat, run the
-          company for a defined term, and build the team and the systems until
-          the seat no longer needs me — or you.
+          Time rolls on, people, systems and tools grew along with bureaucracy
+          and cost. Now you're spending too much time Operating and too little
+          time being the Entrepreneur. You need help.
+        </p>
+        <p>
+          You need someone to work on the business not in the business,
+          someone who can work with you - like a partner - to define the
+          strategy for how to win and implement the capabilities and
+          management systems needed for the team to function without you.
+        </p>
+        <p>
+          This is not advice from the sidelines. I've built the Integrator
+          skillset over the past 30 years through trial and error, books and
+          mentors with public, private and PE companies.
+        </p>
+        <p>
+          I will build you a low drama, disciplined, and well run organization
+          with a guiding Strategy from your vision.
         </p>
       </div>
     </div>
@@ -96,7 +118,9 @@ const work = (await getPublished('work')).sort(byOrder);
             <li class="service-card">
               <h3>{s.data.name}</h3>
               <p>{s.data.promise}</p>
-              <p class="mono-label">{s.data.typicalDuration}</p>
+              {s.data.typicalDuration && (
+                <p class="mono-label">{s.data.typicalDuration}</p>
+              )}
             </li>
           ))
         }
@@ -160,6 +184,10 @@ const work = (await getPublished('work')).sort(byOrder);
     line-height: var(--leading-body);
     max-width: 46ch;
     margin-top: var(--space-m);
+  }
+
+  .deck p + p {
+    margin-top: var(--space-s);
   }
 
   .hero-dim {

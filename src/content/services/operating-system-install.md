@@ -8,7 +8,6 @@ includes:
   - Scorecards with the five numbers that actually predict the month
   - Reporting and comp design aligned to the chart
   - "TODO: confirm remaining inclusions"
-typicalDuration: "TODO: e.g. 90–120 days"
 pricing: "TODO: fixed fee range, e.g. $XX–$XX"
 order: 3
 draft: false

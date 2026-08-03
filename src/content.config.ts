@@ -60,7 +60,8 @@ const services = defineCollection({
     promise: z.string(),
     whoFor: z.string(),
     includes: z.array(z.string()),
-    typicalDuration: z.string(),
+    /** Optional — hidden wherever absent until real durations are set */
+    typicalDuration: z.string().optional(),
     /** Fee range shown on /engagements, e.g. "$18k–$25k / month". Optional until set. */
     pricing: z.string().optional(),
     order: z.number().default(0),
